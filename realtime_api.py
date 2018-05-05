@@ -1,8 +1,12 @@
 import json
 import websocket
 from time import sleep
-from logging import getLogger,DEBUG
+from logging import getLogger,INFO,StreamHandler
 logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(INFO)
+logger.setLevel(INFO)
+logger.addHandler(handler)
 
 """
 This program calls Bitflyer real time API JSON-RPC2.0 over Websocket
@@ -33,7 +37,7 @@ class RealtimeAPI(object):
     # when we get message
     def on_message(self, ws, message):
         output = json.loads(message)['params']
-        logger.debug(message)
+        logger.info(output)
 
     # when error occurs
     def on_error(self, ws, error):
@@ -69,7 +73,7 @@ if __name__ == '__main__':
 
     product code of spot_trading is "BTC_JPY"
     """
-    channel = 'lightning_executions_BTC_JPY'
+    channel = 'lightning_board_snapshot_BTC_JPY'
     json_rpc = RealtimeAPI(url=url, channel=channel)
     json_rpc.run()
 
