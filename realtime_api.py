@@ -13,7 +13,7 @@ This program calls Bitflyer real time API JSON-RPC2.0 over Websocket
 """
 class RealtimeAPI(object):
 
-    def __init__(self, url, channel, queue = None):
+    def __init__(self, url, channel):
         self.url = url
         self.channel = channel
 
