@@ -23,7 +23,7 @@ class RealtimeAPI(object):
         self.ws.keep_running = True
 
     def run(self):
-        #ws has loop. To break this, set keep_running=False from outside
+        #ws has loop. To break this, press occur Keyboard Interruption.
         self.ws.run_forever()   
         logger.info('Web Socket process ended.')
 
