@@ -27,10 +27,6 @@ class RealtimeAPI(object):
         self.ws.run_forever()   
         logger.info('Web Socket process ended.')
 
-    def stop(self):
-        self.ws.keep_running = False
-        logger.info('Stop Web Socket Connection')
-
     """
     Below are callback functions of websocket.
     """
@@ -75,12 +71,5 @@ if __name__ == '__main__':
     """
     channel = 'lightning_board_snapshot_BTC_JPY'
     json_rpc = RealtimeAPI(url=url, channel=channel)
+    #press ctrl+c to stop
     json_rpc.run()
-
-    while True:
-        try:
-            sleep(0.1)
-        except KeyboardInterrupt:
-            json_rpc.stop()
-            exit()
-            
