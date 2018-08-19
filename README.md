@@ -1,26 +1,19 @@
-See README-en.md for English description.
+日本語版はREADME-jp.mdを参照してください。
 
-[日本語説明]
-# Bitflyer-Realtime-API-Python
-これは仮想通貨取引所であるBitflyerのRealtime APIをPythonで呼び出すサンプルプログラムです。
+Bitflyer-Realtime-API-Python
+This is a sample program which call s BitFlyer Realtime API by Python. (Bitflyer is a one of Bit-coin exchange point.)
 
-Realtime APIを呼び出す方法はいくつかの種類がありますが、
-その中のJSON-RPC2.0 over WebSocketを利用しています。
+There is 3 way to call realtime API,ands this program uses one of them, JSON-RPC2.0 over Websocket.
 
+Basic Behavior
+This program uses websocket library for connection. On connection, the callback function "on_open" is called. It sends subscription channel as JSON. Then broadcasting starts.
 
-## 基本動作
-websocket-clientライブラリを用いて接続し、
-接続時、on_openのコールバック関数が呼ばれた時点で、購読チャンネルをJSONで送信しています。
-それによって、対応するチャンネルの情報(板情報など)が配信され、
-配信されるたびにon_messageがよびだされ、そこで配信内容のJSONが受け渡しされます。
+The contents can be got with call back function "on_message" as JSON.
 
-##購読チャンネル
-取得したい情報と板(現物・FX・先物)によって規定されます。
-例えば、現物の板情報のスナップだと、
-lightning_board_snapshot_BTC_JPYとなります。
-詳しくはBitflyer公式HPのAPIについてのページを参照してください。
-https://lightning.bitflyer.jp/docs
+Subscription channel
+This is determined by what kind of information you want and what kind of board(spot trading, FX, futures) you select. Ex. Spot trading and snap shot of board infomation, lightning_board_snapshot_BTC_JPY
 
-## ライセンス
-このプログラムは著作権を一切放棄しています(Public Domain)。
-改変・配布・商用利用は一切自由ですが、各自の責任においてご利用ください。
+For detail, see Bitflyer official page https://lightning.bitflyer.jp/docs?lang=en
+
+Lisence
+Public Domain. You can change, destribute and use commercial freely, at your own risk.
