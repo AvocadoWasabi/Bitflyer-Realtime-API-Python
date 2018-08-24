@@ -7,6 +7,13 @@ This is a sample program which call s BitFlyer Realtime API by Python.
 There is 3 way to call realtime API,ands this program uses one of them,
 JSON-RPC2.0 over Websocket.
 
+##Requirement
+install [websocket-client](https://github.com/websocket-client/websocket-client) version 0.47.0
+
+```
+pip install websocket-client==0.47.0
+```
+
 ## Basic Behavior
 This program uses websocket library for connection.
 On connection, the callback function "on_open" is called.
